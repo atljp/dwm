@@ -89,7 +89,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_u,      setlayout,      {.v = &layouts[3]} }, /* monocle */
 	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[4]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,             XK_i,      setlayout,      {.v = &layouts[5]} }, /* centeredfloatingmaster */
-	{ MODKEY|ShiftMask,		XK_f	   setlayout,      {.v = &layouts[6]} }, /* floating */
+	{ MODKEY|ShiftMask,		XK_f,	   setlayout,      {.v = &layouts[6]} }, /* floating */
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
