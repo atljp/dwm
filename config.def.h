@@ -84,7 +84,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,  	                XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /* tile */
-	{ MODKEY|ShiftMask,		XK_t	   setlayout,	   {.v = &layouts[1]} }, /* bstack */
+	{ MODKEY|ShiftMask,		XK_t,	   setlayout,	   {.v = &layouts[1]} }, /* bstack */
 	{ MODKEY,                       XK_z,      setlayout,      {.v = &layouts[1]} }, /* spiral */
 	{ MODKEY|ShiftMask,             XK_z,      setlayout,      {.v = &layouts[2]} }, /* dwindle */
 	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[3]} }, /* deck */
