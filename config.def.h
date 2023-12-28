@@ -91,6 +91,7 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,  	                XK_q,      killclient,     {0} },
 	{ MODKEY,	                XK_f,      togglefullscr,  {0} },
+	{ MODKEY, 		        XK_s,      togglesticky,   {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,	   setlayout,	   {.v = &layouts[1]} }, /* bstack */ 
 	{ MODKEY,                       XK_z,      setlayout,      {.v = &layouts[2]} }, /* spiral */
