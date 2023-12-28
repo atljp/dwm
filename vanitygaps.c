@@ -73,6 +73,7 @@ incrgaps(const Arg *arg)
 	);
 }
 
+/* UNUSED
 void
 incrigaps(const Arg *arg)
 {
@@ -138,6 +139,7 @@ incrivgaps(const Arg *arg)
 		selmon->gappiv + arg->i
 	);
 }
+*/
 
 void
 getgaps(Monitor *m, int *oh, int *ov, int *ih, int *iv, unsigned int *nc)
@@ -746,7 +748,7 @@ nrowgrid(Monitor *m)
 	if (FORCE_VSPLIT && n == 2)
 		rows = 1;
 
-	//* never allow empty rows
+	// never allow empty rows
 	if (n < rows)
 		rows = n;
 

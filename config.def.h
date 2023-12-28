@@ -54,7 +54,7 @@ static const Layout layouts[] = {
 	{ "[D]",      deck },
 	{ "[M]",      monocle },
 	{ "|M|",      centeredmaster },
-/	{ ">M>",      centeredfloatingmaster },
+	{ ">M>",      centeredfloatingmaster },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
 	{ NULL,	      NULL },
 
