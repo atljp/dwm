@@ -98,10 +98,10 @@ static const Key keys[] = {
 	{ MODKEY,                       XK_z,      setlayout,      {.v = &layouts[2]} }, /* spiral */
 	{ MODKEY|ShiftMask,             XK_z,      setlayout,      {.v = &layouts[3]} }, /* dwindle */
 	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[4]} }, /* deck */
-	{ MODKEY|ShiftMask,             XK_u,      setlayout,      {.v = &layouts[1]} }, /* monocle */
+	{ MODKEY|ShiftMask,             XK_u,      setlayout,      {.v = &layouts[5]} }, /* monocle */
 	{ MODKEY,                       XK_i,      setlayout,      {.v = &layouts[6]} }, /* centeredmaster */
 	{ MODKEY|ShiftMask,             XK_i,      setlayout,      {.v = &layouts[7]} }, /* centeredfloatingmaster */
-	{ MODKEY|ShiftMask,		XK_f,	   setlayout,      {.v = &layouts[2]} }, /* floating */
+	{ MODKEY|ShiftMask,		XK_f,	   setlayout,      {.v = &layouts[8]} }, /* floating */
 	{ MODKEY,	                XK_y,      incrgaps,       {.i = +3 } },
 	{ MODKEY, 		        XK_x,      incrgaps,       {.i = -3 } },
 	{ MODKEY,	                XK_a,      togglegaps,     {0} },
@@ -124,6 +124,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
+	{ MODKEY,			XK_BackSpace, quit,        {1} }, 
 };
 
 /* button definitions */
