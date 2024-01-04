@@ -1,6 +1,8 @@
 /* See LICENSE file for copyright and license details. */
+/* Bind are made for German keyboard layout */
 
 #include <X11/XF86keysym.h>
+#include "vanitygaps.c"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -49,7 +51,6 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
-#include "vanitygaps.c"
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
@@ -138,7 +139,12 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,     	                 7)
 	TAGKEYS(                        XK_9,     	                 8)
 	{ MODKEY|ShiftMask,             XK_q,     	 quit,           {0} },
-	{ MODKEY,			XK_BackSpace,	 quit,       	 {1} }, 
+	{ MODKEY,			XK_BackSpace,	 quit,       	 {1} }, /* reload */ 
+	{ MODKEY, 			XK_dead_acute,	 spawn,		 {.v = (const char*[]){ "sysact", NULL } } },
+	{ MODKEY, 			XK_ssharp,	 spawn,		 {.v = (const char*[]){ "xbacklight", "-set", "0", NULL } } }, /* turn off laptop display */
+	{ 0, XF86XK_MonBrightnessUp,    spawn,		{.v = (const char*[]){ "xbacklight", "-inc", "10", NULL } } }, 
+	{ 0, XF86XK_MonBrightnessDown,  spawn,		{.v = (const char*[]){ "xbacklight", "-dec", "10", NULL } } }, 
+	{ 0, XF86XK_ScreenSaver,	spawn,		{.v = (const char*[]){ "sysact", NULL } } }, /* x220 */
 	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%+ && wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-; kill -44 $(pidof dwmblocks)") },
