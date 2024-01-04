@@ -142,10 +142,12 @@ static const Key keys[] = {
 	{ MODKEY,			XK_BackSpace,	 quit,       	 {1} }, /* reload */ 
 	{ MODKEY, 			XK_dead_acute,	 spawn,		 {.v = (const char*[]){ "sysact", NULL } } },
 	{ MODKEY, 			XK_ssharp,	 spawn,		 {.v = (const char*[]){ "xbacklight", "-set", "0", NULL } } }, /* turn off laptop display */
-	{ 0, XF86XK_MonBrightnessUp,    spawn,		{.v = (const char*[]){ "xbacklight", "-inc", "10", NULL } } }, 
-	{ 0, XF86XK_MonBrightnessDown,  spawn,		{.v = (const char*[]){ "xbacklight", "-dec", "10", NULL } } }, 
+	{ MODKEY, 			XK_udiaeresis,	 spawn,		 {.v = (const char*[]){ "displayselect", NULL } } },
+/*	{ 0, XF86XK_MonBrightnessUp,    spawn,		{.v = (const char*[]){ "xbacklight", "-inc", "10", NULL } } }, */
+/*	{ 0, XF86XK_MonBrightnessDown,  spawn,		{.v = (const char*[]){ "xbacklight", "-dec", "10", NULL } } }, */
 	{ 0, XF86XK_ScreenSaver,	spawn,		{.v = (const char*[]){ "sysact", NULL } } }, /* x220 */
 	{ 0, XF86XK_AudioMute,		spawn,		SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle; kill -44 $(pidof dwmblocks)") },
+	{ 0, XF86XK_AudioMicMute,	spawn,		SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
 	{ 0, XF86XK_AudioRaiseVolume,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%- && wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+; kill -44 $(pidof dwmblocks)") },
 	{ 0, XF86XK_AudioLowerVolume,	spawn,		SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%+ && wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-; kill -44 $(pidof dwmblocks)") },
 };
