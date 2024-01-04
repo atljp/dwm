@@ -2,7 +2,6 @@
 /* Bind are made for German keyboard layout */
 
 #include <X11/XF86keysym.h>
-#include "vanitygaps.c"
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -51,6 +50,7 @@ static const int resizehints = 0;    /* 1 means respect size hints in tiled resi
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
+#include "vanitygaps.c"
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
