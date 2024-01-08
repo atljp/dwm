@@ -6,6 +6,7 @@
 /* Constants */
 #define TERMINAL "st"
 #define TERMCLASS "St"
+#define BROWSER "firefox"
 
 /* appearance */
 static unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -45,7 +46,6 @@ static const Rule rules[] = {
 	 */
 	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
 	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "Firefox", NULL,     NULL,           1 << 8,    0,          0,          -1,        -1 },
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
 };
@@ -140,6 +140,7 @@ static const Key keys[] = {
 	{ MODKEY,  	                XK_q,     	 killclient,     {0} },
 	{ MODKEY,	                XK_f,     	 togglefullscr,  {0} },
 	{ MODKEY, 		        XK_s,     	 togglesticky,   {0} },
+	{ MODKEY, 			XK_w,		 spawn,		 {.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY,                       XK_t,     	 setlayout,      {.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,	  	 setlayout,	   {.v = &layouts[1]} }, /* bstack */ 
 	{ MODKEY,                       XK_z,     	 setlayout,      {.v = &layouts[2]} }, /* spiral */
