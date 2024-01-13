@@ -19,7 +19,7 @@ static unsigned int gappov    = 30;       /* vert outer gap between windows and 
 static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
-static const Bool viewontag         = True;     /* Switch view on tag switch */
+/* static const Bool viewontag         = True; */    /* Switch view on tag switch */
 static char *fonts[]          =	    { "monospace:size=10" };
 static const char dmenufont[]       = "monospace:size=10";
 static char normbgcolor[]           = "#222222";
@@ -79,7 +79,8 @@ static const Layout layouts[] = {
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      view,           {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
-	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
+	{ MODKEY|ShiftMask,             KEY,      tag2,           {.ui = 1 << TAG} }, \
+	{ Mod4Mask|ShiftMask,           KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 #define STACKKEYS(MOD,ACTION) \
 	{ MOD, XK_j,     ACTION##stack, {.i = INC(+1) } }, \
@@ -142,7 +143,7 @@ static const Key keys[] = {
 	{ MODKEY, 		        XK_s,     	 togglesticky,   {0} },
 	{ MODKEY, 			XK_w,		 spawn,		 {.v = (const char*[]){ BROWSER, NULL } } },
 	{ MODKEY,                       XK_t,     	 setlayout,      {.v = &layouts[0]} }, /* tile */
-	{ MODKEY|ShiftMask,		XK_t,	  	 setlayout,	   {.v = &layouts[1]} }, /* bstack */ 
+	{ MODKEY|ShiftMask,		XK_t,	  	 setlayout,	 {.v = &layouts[1]} }, /* bstack */ 
 	{ MODKEY,                       XK_z,     	 setlayout,      {.v = &layouts[2]} }, /* spiral */
 	{ MODKEY|ShiftMask,             XK_z,     	 setlayout,      {.v = &layouts[3]} }, /* dwindle */
 	{ MODKEY,                       XK_u,     	 setlayout,      {.v = &layouts[4]} }, /* deck */
