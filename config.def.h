@@ -9,7 +9,7 @@
 #define BROWSER "firefox"
 
 /* appearance */
-static unsigned int borderpx  = 3;        /* border pixel of windows */
+static unsigned int borderpx  = 4;        /* border pixel of windows */
 static unsigned int snap      = 32;       /* snap pixel */
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static unsigned int gappih    = 20;       /* horiz inner gap between windows */
@@ -31,8 +31,7 @@ static char selbgcolor[]            = "#005577";
 static char *colors[][3] = {
        /*               fg           bg           border   */
        [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel] = { normfgcolor, normbgcolor, normbordercolor },
-       /* [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  }, */
+       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
        [SchemeTagsSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 
@@ -44,11 +43,12 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor */
-	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1 },
-	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1 },
-	{ "lutris",  NULL,     NULL,           0,         1,          0,           1,        -1 },
-	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1 }, /* xev */
+	/* class     instance  title           tags mask  isfloating  isterminal  noswallow  monitor border width */
+	{ "Gimp",    NULL,     NULL,           0,         1,          0,           0,        -1,     -1 },
+	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1,     -1 },
+	{ "lutris",  NULL,     NULL,           0,         1,          0,           1,        -1,     -1 },
+	{ "Firefox", NULL,     NULL,           0,         0,          0,           0,        -1,     0  },
+	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1,     -1 }, /* xev */
 };
 
 /* layout(s) */
@@ -156,6 +156,7 @@ static const Key keys[] = {
 	{ MODKEY, 		        XK_x,     	 incrgaps,       {.i = -3 } },
 	{ MODKEY,	                XK_a,     	 togglegaps,     {0} },
 	{ MODKEY|ShiftMask,	        XK_a,     	 defaultgaps,    {0} },
+	{ MODKEY, 			XK_r,   	 spawn,		 {.v = (const char*[]){ "rofi", "-show", "drun", NULL } } },
 	{ MODKEY,                       XK_space, 	 setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space, 	 togglefloating, {0} },
 	{ MODKEY,                       XK_0,     	 view,           {.ui = ~0 } }, /* view all windows regardless of tag */
@@ -181,6 +182,7 @@ static const Key keys[] = {
 	{ MODKEY, 			XK_odiaeresis,	 spawn,		 {.v = (const char*[]){ "pavucontrol", NULL } } },
 	{ MODKEY|ShiftMask,		XK_odiaeresis,	 spawn,		 {.v = (const char*[]){ TERMINAL, "-e", "pulsemixer", NULL } } },
 	{ MODKEY, 			XK_adiaeresis,	 spawn,		 {.v = (const char*[]){ TERMINAL, "-e", "sudo", "nmtui", NULL } } }, /* NetworkManager package */
+	{ MODKEY, 			XK_F11,	         spawn,          SHCMD("mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)") },
 /*	{ 0, XF86XK_MonBrightnessUp,    spawn,		{.v = (const char*[]){ "xbacklight", "-inc", "10", NULL } } }, */
 /*	{ 0, XF86XK_MonBrightnessDown,  spawn,		{.v = (const char*[]){ "xbacklight", "-dec", "10", NULL } } }, */
 	{ 0, XF86XK_ScreenSaver,	spawn,		{.v = (const char*[]){ "sysact", NULL } } }, /* x220 */
