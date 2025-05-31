@@ -9,7 +9,7 @@
 #define BROWSER "firefox"
 
 /* appearance */
-static unsigned int borderpx  = 4;        /* border pixel of windows */
+static unsigned int borderpx  = 2;        /* border pixel of windows */
 static unsigned int snap      = 32;       /* snap pixel */
 static int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
 static unsigned int gappih    = 20;       /* horiz inner gap between windows */
@@ -20,8 +20,8 @@ static       int smartgaps          = 0;        /* 1 means no outer gap when the
 static int showbar            = 1;        /* 0 means no bar */
 static int topbar             = 1;        /* 0 means bottom bar */
 /* static const Bool viewontag         = True; */    /* Switch view on tag switch */
-static char *fonts[]          =	    { "martian mono:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static char *fonts[]          =	    { "monospace:size=10", "NotoColorEmoji:pixelsize=10:antialias=true:autohint=true" };
+//static const char dmenufont[]       = "monospace:size=10";
 static char normbgcolor[]           = "#222222";
 static char normbordercolor[]       = "#444444";
 static char normfgcolor[]           = "#bbbbbb";
@@ -48,6 +48,8 @@ static const Rule rules[] = {
 	{ "St",      NULL,     NULL,           0,         0,          1,           0,        -1,     -1 },
 	{ "lutris",  NULL,     NULL,           0,         1,          0,           1,        -1,     -1 },
 	{ "Firefox", NULL,     NULL,           0,         0,          0,           0,        -1,     0  },
+	{ "Brave", NULL,     NULL,           0,         0,          0,           0,        -1,     0  },
+	{ "mpv",     NULL,     NULL,           0,         0,          0,           0,        -1,     0  },
 	{ NULL,      NULL,     "Event Tester", 0,         0,          0,           1,        -1,     -1 }, /* xev */
 };
 
@@ -96,8 +98,8 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
+//static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+//static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbordercolor, "-sf", selfgcolor, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 /*
@@ -127,7 +129,7 @@ ResourcePref resources[] = {
 
 static const Key keys[] = {
 	/* modifier                     key       	 function        argument */
-	{ MODKEY,                       XK_d,     	 spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,     	 spawn,          {.v = (const char*[]){ "dmenu_run", NULL } } },
 	{ MODKEY,	                XK_Return,	 spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,     	 togglebar,      {0} },
 	{ MODKEY,                       XK_o,     	 incnmaster,     {.i = +1 } },
@@ -143,6 +145,7 @@ static const Key keys[] = {
 	{ MODKEY,	                XK_f,     	 togglefullscr,  {0} },
 	{ MODKEY, 		        XK_s,     	 togglesticky,   {0} },
 	{ MODKEY, 			XK_w,		 spawn,		 {.v = (const char*[]){ BROWSER, NULL } } },
+	{ MODKEY|ShiftMask,		XK_w,		 spawn,		 {.v = (const char*[]){ "brave-browser-stable", NULL } } },
 	{ MODKEY,                       XK_t,     	 setlayout,      {.v = &layouts[0]} }, /* tile */
 	{ MODKEY|ShiftMask,		XK_t,	  	 setlayout,	 {.v = &layouts[1]} }, /* bstack */ 
 	{ MODKEY,                       XK_z,     	 setlayout,      {.v = &layouts[2]} }, /* spiral */
@@ -157,6 +160,7 @@ static const Key keys[] = {
 	{ MODKEY,	                XK_a,     	 togglegaps,     {0} },
 	{ MODKEY|ShiftMask,	        XK_a,     	 defaultgaps,    {0} },
 	{ MODKEY, 			XK_r,   	 spawn,		 {.v = (const char*[]){ "rofi", "-show", "drun", NULL } } },
+	{ MODKEY|ShiftMask,		XK_l,   	 spawn,		 {.v = (const char*[]){ TERMINAL, "-e", "lfub", NULL } } },
 	{ MODKEY,                       XK_space, 	 setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space, 	 togglefloating, {0} },
 	{ MODKEY,                       XK_0,     	 view,           {.ui = ~0 } }, /* view all windows regardless of tag */
@@ -204,7 +208,7 @@ static const Button buttons[] = {
 	{ ClkStatusText,        0,              Button3,        sigdwmblocks,   {.i = 3} },
 	{ ClkStatusText,        0,              Button4,        sigdwmblocks,   {.i = 4} },
 	{ ClkStatusText,        0,              Button5,        sigdwmblocks,   {.i = 5} },
-	{ ClkStatusText|ShiftMask,        0,              Button1,        sigdwmblocks,   {.i = 6} },
+	{ ClkStatusText,        ShiftMask,      Button1,        sigdwmblocks,   {.i = 6} },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
